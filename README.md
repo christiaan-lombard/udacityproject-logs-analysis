@@ -3,9 +3,40 @@
 This is my project submission for the Udacity Fullstack Developer Nanodegree, Backend Module, Logs Analysis Project.
 
 
-## Resources
+## Install & Run
 
+### VM
+
+To run the application inside a VM, install [Vagrant]() and run:
+
+```sh
+vagrant up
+vagrant ssh
+```
+
+In the vm shell go to to the synced folder:
+
+```sh
+cd /vagrant
+```
+
+### Install
+
+Download the data, [newsdata.zip](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip), and unzip `newsdata.sql` in the repository root.
+
+Run the `psql` commands to seed the database from `newsdata.sql`.
+
+```sh
+createdb news       # if news database not created already
+psql -d news -f newsdata.sql
+```
+
+
+## Docs & Resources
+
+ - [Data Structures](docs/newsdata.md)
  - [newsdata.sql seed data](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
+
 
 
 
