@@ -1,7 +1,5 @@
-# Newsdata
+# Tables
 
-
-## Tables
 ```
 \dt
 
@@ -12,7 +10,7 @@
  public | log      | table | vagrant
 ```
 
-### Table Articles
+## Table Articles
 
 ```
 \d articles
@@ -49,7 +47,7 @@ select id, slug, author, time
 (5 rows)
 ```
 
-### Table Authors
+## Table Authors
 
 ```
 \d authors
@@ -80,7 +78,7 @@ select id, name
 (4 rows)
 ```
 
-### Table Logs
+## Table Log
 
 ```
 \d log
@@ -99,68 +97,17 @@ Indexes:
 ```
 
 ```sql
-select id, path, date(time) as date, ip
+select id, path, status, date(time) as date
     from log
     limit 5;
 ```
 
 ```
-   id    |             path              |    date    |       ip
----------+-------------------------------+------------+----------------
- 1678923 | /                             | 2016-07-01 | 198.51.100.195
- 1678924 | /article/candidate-is-jerk    | 2016-07-01 | 198.51.100.195
- 1678925 | /article/goats-eat-googles    | 2016-07-01 | 198.51.100.195
- 1678926 | /article/goats-eat-googles    | 2016-07-01 | 198.51.100.195
- 1678927 | /article/balloon-goons-doomed | 2016-07-01 | 198.51.100.195
-```
-
-Top ten article logs:
-
-```sql
-select path, count(*) as hits
-    from log
-    where path like '/article/%'
-        and method = 'GET'
-    group by path
-    order by hits desc
-    limit 10;
-```
-```
-                path                |  hits
-------------------------------------+--------
- /article/candidate-is-jerk         | 338647
- /article/bears-love-berries        | 253801
- /article/bad-things-gone           | 170098
- /article/goats-eat-googles         |  84906
- /article/trouble-for-troubled      |  84810
- /article/balloon-goons-doomed      |  84557
- /article/so-many-bears             |  84504
- /article/media-obsessed-with-bears |  84383
- /article/candidate-is-jerkx        |    161
- /article/candidate-is-jerkq        |    155
-```
-
-```sql
-select path, ip, count(path) as hits
-    from log
-    where path like '/article/%'
-        and method = 'GET'
-    group by path, ip
-    order by hits desc
-    limit 10;
-```
-
-```
-            path            |       ip       | hits
-----------------------------+----------------+------
- /article/candidate-is-jerk | 192.0.2.59     |  541
- /article/candidate-is-jerk | 192.0.2.171    |  523
- /article/candidate-is-jerk | 198.51.100.251 |  512
- /article/candidate-is-jerk | 203.0.113.107  |  511
- /article/candidate-is-jerk | 198.51.100.60  |  510
- /article/candidate-is-jerk | 192.0.2.80     |  507
- /article/candidate-is-jerk | 198.51.100.140 |  506
- /article/candidate-is-jerk | 203.0.113.79   |  503
- /article/candidate-is-jerk | 203.0.113.80   |  502
- /article/candidate-is-jerk | 192.0.2.154    |  502
+   id    |             path              | status |    date
+---------+-------------------------------+--------+------------
+ 1678923 | /                             | 200 OK | 2016-07-01
+ 1678924 | /article/candidate-is-jerk    | 200 OK | 2016-07-01
+ 1678925 | /article/goats-eat-googles    | 200 OK | 2016-07-01
+ 1678926 | /article/goats-eat-googles    | 200 OK | 2016-07-01
+ 1678927 | /article/balloon-goons-doomed | 200 OK | 2016-07-01
 ```
