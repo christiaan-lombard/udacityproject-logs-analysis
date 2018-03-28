@@ -1,3 +1,4 @@
 newsdata.sql
 .vagrant
 *.pyc
+__pycache__
