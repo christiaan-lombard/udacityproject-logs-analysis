@@ -89,15 +89,29 @@ select p.id, p.name, sum(v.views) as sum_views
 ### Agregate daily logs
 
 ```sql
-select
-    date(time) as date,
-    count(status) filter (where status like '2%') as success,
-    count(status) filter (where status like '3%') as redirect,
-    count(status) filter (where status like '4%') as client_error,
-    count(status) filter (where status like '5%') as server_error,
-    count(status) as total
-from log
-group by date
-order by client_error desc
-limit 5;
+create view log_daily_status as
+    select
+        date(time) as date,
+        count(status) filter (where status like '2%') as success,
+        count(status) filter (where status like '3%') as redirect,
+        count(status) filter (where status like '4%') as client_error,
+        count(status) filter (where status like '5%') as server_error,
+        count(status) as total
+    from log
+    group by date;
+```
+
+### Select days where more than 1% client error
+
+```sql
+select date, total, client_error, (client_error*100 / total) as error_percent
+    from log_daily_status
+    where (client_error*100 / total) > 1
+    order by error_percent desc;
+
+```
+```
+    date    | total | client_error | error_percent
+------------+-------+--------------+---------------
+ 2016-07-17 | 55907 |         1265 |             2
 ```

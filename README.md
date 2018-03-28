@@ -32,6 +32,13 @@ psql -d news -f newsdata.sql
 ```
 
 
+### Test PEP8
+
+```sh
+pycodestyle --show-pep8 --show-source --first ./src/app.py
+```
+
+
 ## Docs & Resources
 
  - [Data Structures](docs/newsdata.md)
