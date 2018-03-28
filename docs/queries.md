@@ -107,13 +107,3 @@ limit 5;
  2016-07-05 |   54162 |        0 |          423 |            0 | 54585
  2016-07-06 |   54354 |        0 |          420 |            0 | 54774
 ```
-
-
-### Articles joined with agregated log
-
-```sql
-select a.id, a.slug, a.author, l.path
-    from articles as a
-    left join log as l on (l.path like '%' || a.slug || '%')
-    limit 10;
-```
