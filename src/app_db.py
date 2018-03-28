@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import psycopg2
+
 """Database for Logs Analysis app
 
     Requires views 'article_views' and 'log_daily_status'
@@ -7,8 +9,6 @@
 
 """
 __author__ = "Christiaan Lombard <base1.christiaan@gmail.com>"
-
-import psycopg2
 
 
 MOST_VIEWED_ARTICLES_SQL = '''
@@ -75,7 +75,6 @@ def get_high_error_days(limit):
     """
 
     return db_fetch_all(HIGH_ERROR_DAYS_SQL, [limit])
-
 
 
 def db_fetch_all(sql, params):

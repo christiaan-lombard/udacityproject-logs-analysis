@@ -2,6 +2,11 @@
 
 This is my project submission for the Udacity Fullstack Developer Nanodegree, Backend Module, Logs Analysis Project.
 
+In this project SQL is used to make sense of a request logs table and draw reports on popular news articles.
+
+See [Report Notes](docs/reports.md) for more info.
+See [Example Output](output.md) to see result.
+
 
 ## Install & Run
 
@@ -14,7 +19,7 @@ vagrant up
 vagrant ssh
 ```
 
-In the vm shell go to to the synced folder:
+In the vm shell go to the synced folder:
 
 ```sh
 cd /vagrant
@@ -28,22 +33,40 @@ Run the `psql` commands to seed the database from `newsdata.sql`.
 
 ```sh
 createdb news       # if news database not created already
-psql -d news -f newsdata.sql
+
+psql -d news -f newsdata.sql    # install seed data
+psql -d news -f ./src/views.sql # install views
+```
+
+### Run
+
+Run the application:
+
+```sh
+python3 ./src/app.py
+```
+
+Output result to markdown file:
+
+```sh
+python3 ./src/app.py > output.md
 ```
 
 
 ### Test PEP8
 
 ```sh
-pycodestyle --show-pep8 --show-source --first ./src/app.py
+pycodestyle ./src/app.py ./src/app_db.py
 ```
 
 
 ## Docs & Resources
 
- - [Data Structures](docs/newsdata.md)
+ - [Query Notes](docs/queries.md)
+ - [Report Notes](docs/tables.md)
+ - [Data Structure Notes](docs/tables.md)
+ - [Example Output](output.md)
  - [newsdata.sql seed data](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
-
 
 
 
