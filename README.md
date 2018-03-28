@@ -92,7 +92,7 @@ pycodestyle ./src/app.py ./src/app_db.py
 ## Docs & Resources
 
  - [Query Notes](docs/queries.md)
- - [Report Notes](docs/tables.md)
+ - [Report Notes](docs/reports.md)
  - [Data Structure Notes](docs/tables.md)
  - [Example Output](output.md)
  - [newsdata.sql seed data](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
