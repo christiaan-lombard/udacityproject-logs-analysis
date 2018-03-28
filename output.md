@@ -17,3 +17,8 @@
   2. Rudolf von Treppenwitz (423457 views)
   3. Anonymous Contributor (170098 views)
   4. Markoff Chaney (84557 views)
+
+## Days where more than 1% of requests led to errors:
+
+  1. 17 Jul, 2016 (2% errors)
+
